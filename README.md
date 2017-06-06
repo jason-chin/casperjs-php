@@ -16,7 +16,7 @@ Before using casperjs-php is, you need to install both libraries:
 
 2 - **CasperJS** http://casperjs.org/installation.html
 
-The `composer require jason-chin/casperjs-php`
+The `composer require jrobchin/casperjs-php`
 
 Usage
 -----
@@ -24,7 +24,7 @@ Usage
 ```php
 <?php
 
-use jason-chin\casperjsphp\Casper;
+use jrobchin\casperjsphp\Casper;
 
 $casper = new Casper('/path/to/capserjs/bin/dir/');
 

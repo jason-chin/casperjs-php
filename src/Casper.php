@@ -1,5 +1,5 @@
 <?php
-namespace jason-chin\casperjsphp;
+namespace jrobchin\casperjsphp;
 
 /**
  * CasperJS wrapper
@@ -206,6 +206,71 @@ FRAGMENT;
     }
 
     /**
+     * Creates the casper object and set params
+     * @param  boolean $loadImages        
+     * @param  boolean $javascriptEnabled 
+     * @param  boolean $loadPlugins       
+     * @param  array   $skip_urls         
+     * @return boolean                     
+     */
+    public function create($loadImages=true, $javascriptEnabled=true, $loadPlugins=true, $skip_urls=array())
+    {
+        $this->_clear();
+
+        $create = <<<FRAGMENT
+var casper = require('casper').create({
+    verbose: true,
+    logLevel: 'debug',
+    colorizerType: 'Dummy'
+});
+FRAGMENT;
+    
+        $this->addStep($create);
+
+        $pageSettings = <<<FRAGMENT
+casper.pageSettings = {
+    javascriptEnabled:$javascriptEnabled,
+    loadImages:$loadImages,
+    loadPlugins:$loadPlugins,
+};
+FRAGMENT;
+
+        $this->addStep($pageSettings);
+
+
+        if (count($skip_urls) > 0) {
+            $skips = "";
+            foreach ($skip_urls as $skip_url) {
+                $skips .= "'" . $skip_url . "',\n";
+            }
+
+            $blockRequests = <<<FRAGMENT
+casper.options.onResourceRequested = function(casper, requestData, request) {
+  // If any of these strings are found in the requested resource's URL, skip
+  // this request. These are not required for running tests.
+  var skip = [$skips];
+
+  skip.forEach(function(needle) {
+    if (requestData.url.indexOf(needle) > 0) {
+      request.abort();
+    }
+  })
+};
+FRAGMENT;
+
+            $this->addStep($blockRequests);
+        }
+
+        $setUserAgent = <<<FRAGMENT
+casper.userAgent('$this->_userAgent');
+FRAGMENT;
+
+        $this->addStep($setUserAgent);
+
+        return $this;
+    }
+
+    /**
      * Open the specified url
      *
      * @param string $url
@@ -214,20 +279,8 @@ FRAGMENT;
      */
     public function start($url)
     {
-        $this->_clear();
 
         $step = <<<FRAGMENT
-var casper = require('casper').create({
-    verbose: true,
-    logLevel: 'debug',
-    colorizerType: 'Dummy'
-});
-casper.pageSettings = {
-    javascriptEnabled:true,
-    loadImages:true,
-    loadPlugins:true,
-};
-casper.userAgent('$this->_userAgent');
 casper.start().then(function() {
     this.open('$url', {
         headers: {
@@ -236,6 +289,7 @@ casper.start().then(function() {
     });
 });
 FRAGMENT;
+
         $this->addStep($step);
 
         return $this;

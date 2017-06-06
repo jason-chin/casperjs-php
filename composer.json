@@ -1,9 +1,9 @@
 {
-    "name": "jason-chin/casperjs-php",
+    "name": "jrobchin/casperjs-php",
     "description": "Extension of phpcasperjs/phpcasperjs including extra functions",
     "type": "extension",
     "keywords": [
-        "jason-chin",
+        "jrobchin",
         "casperjs",
         "phantomjs",
         "php",
@@ -12,7 +12,7 @@
         "casperjs-php",
         "casperjsphp"
     ],
-    "homepage": "https://github.com/jason-chin/casperjs-php",
+    "homepage": "https://github.com/jrobchin/casperjs-php",
     "license": "MIT",
     "authors": [
         {
@@ -22,15 +22,15 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/jason-chin/casperjs-php/issues",
-        "source": "https://github.com/jason-chin/casperjs-php"
+        "issues": "https://github.com/jrobchin/casperjs-php/issues",
+        "source": "https://github.com/jrobchin/casperjs-php"
     },
     "require": {
         "phpcasperjs/phpcasperjs": "*"
     },
     "autoload": {
         "psr-4": {
-            "jason-chin\\casperjsphp\\": "src/"
+            "jrobchin\\casperjsphp\\": "src/"
         }
     },
     "extra": {
