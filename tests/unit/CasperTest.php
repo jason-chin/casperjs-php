@@ -1,5 +1,5 @@
 <?php
-use synacksa\casperjsphp\Casper;
+use jason-chin\casperjsphp\Casper;
 
 class CasperTest extends PHPUnit\Framework\TestCase
 {
@@ -13,7 +13,7 @@ class CasperTest extends PHPUnit\Framework\TestCase
     public function testCreateInstance()
     {
         $casper = new Casper($this->casperJsPath);
-        $this->assertInstanceOf('synacksa\casperjsphp\Casper', $casper);
+        $this->assertInstanceOf('jason-chin\casperjsphp\Casper', $casper);
     }
 
     public function testStartOnGoogleSearchPage()

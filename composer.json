@@ -1,9 +1,9 @@
 {
-    "name": "synacksa/casperjs-php",
+    "name": "jason-chin/casperjs-php",
     "description": "Extension of phpcasperjs/phpcasperjs including extra functions",
     "type": "extension",
     "keywords": [
-        "synackSA",
+        "jason-chin",
         "casperjs",
         "phantomjs",
         "php",
@@ -12,25 +12,25 @@
         "casperjs-php",
         "casperjsphp"
     ],
-    "homepage": "https://github.com/synackSA/casperjs-php",
+    "homepage": "https://github.com/jason-chin/casperjs-php",
     "license": "MIT",
     "authors": [
         {
-            "name": "Garth Michel",
-            "email": "syndrome@gmail.com",
+            "name": "Jason Chin",
+            "email": "jason.rob.chin@gmail.com",
             "role": "Developer"
         }
     ],
     "support": {
-        "issues": "https://github.com/synackSA/casperjs-php/issues",
-        "source": "https://github.com/synackSA/casperjs-php"
+        "issues": "https://github.com/jason-chin/casperjs-php/issues",
+        "source": "https://github.com/jason-chin/casperjs-php"
     },
     "require": {
         "phpcasperjs/phpcasperjs": "*"
     },
     "autoload": {
         "psr-4": {
-            "synacksa\\casperjsphp\\": "src/"
+            "jason-chin\\casperjsphp\\": "src/"
         }
     },
     "extra": {

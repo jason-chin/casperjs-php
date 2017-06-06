@@ -1,12 +1,12 @@
 <?php
-namespace synacksa\casperjsphp;
+namespace jason-chin\casperjsphp;
 
 /**
  * CasperJS wrapper
  *
  * Based on https://github.com/alwex/php-casperjs
  *
- * @author Garth Michel <syndrome@gmail.com>
+ * @author Jason Chin <jason.rob.chin@gmail.com>
  *
  */
 class Casper
