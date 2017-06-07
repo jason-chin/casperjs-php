@@ -213,7 +213,7 @@ FRAGMENT;
      * @param  array   $skip_urls         
      * @return boolean                     
      */
-    public function create($loadImages=true, $javascriptEnabled=true, $loadPlugins=true, $skip_urls=array())
+    public function create($skip_urls, $loadImages='true', $javascriptEnabled='true', $loadPlugins='true')
     {
         $this->_clear();
 

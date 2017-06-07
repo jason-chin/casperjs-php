@@ -37,6 +37,12 @@ $casper->setOptions(array(
 // Setup User Agent
 $casper->setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36');
 
+// Create the casper javascript object
+// use '$skip_urls' to pass an array of urls to block requests
+// parameters: $skip_urls, $loadImages='true', $javascriptEnabled='true', $loadPlugins='true'
+$skip_urls = ['www.youtube.com', 'www.googleadservices.com'];
+$casper->create($skip_urls, $loadImages='false');
+
 // navigate to google web page
 $casper->start('http://www.google.com');
 
