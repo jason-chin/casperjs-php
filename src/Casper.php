@@ -246,16 +246,25 @@ FRAGMENT;
 
             $blockRequests = <<<FRAGMENT
 casper.options.onResourceRequested = function(casper, requestData, request) {
-  // If any of these strings are found in the requested resource's URL, skip
-  // this request. These are not required for running tests.
   var skip = [$skips];
 
   skip.forEach(function(needle) {
-    if (requestData.url.indexOf(needle) > 0) {
-      request.abort();
-    }
+      if (requestData.url.indexOf(needle) + 1) {
+        request.abort();
+      }
   })
+
 };
+
+casper.on('navigation.requested', function(requestData, request) {
+    var skip = [$skips];
+
+    skip.forEach(function(needle) {
+      if (requestData.url.indexOf(needle) + 1) {
+        request.abort();
+      }
+    })
+});
 FRAGMENT;
 
             $this->addStep($blockRequests);
